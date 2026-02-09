@@ -1,36 +1,36 @@
-let boy = "";
 let girl = "";
-let msg = "";
+let message = "";
 
-function createInvite() {
-  boy = document.getElementById("boyName").value;
+function start() {
   girl = document.getElementById("girlName").value;
-  msg = document.getElementById("message").value;
+  message = document.getElementById("message").value;
 
-  if (boy === "" || girl === "" || msg === "") {
-    alert("Please fill in all fields 💕");
+  if (girl === "" || message === "") {
+    alert("Please fill everything 💕");
     return;
   }
 
   document.getElementById("formCard").classList.add("hidden");
-  document.getElementById("inviteCard").classList.remove("hidden");
+  document.getElementById("slide1").classList.remove("hidden");
 
-  document.getElementById("inviteTitle").innerText =
-    `Dear ${girl} 💖`;
+  document.getElementById("loveMessage").innerText =
+    `Hey ${girl} babe 💖\n\n${message}`;
+}
 
-  document.getElementById("inviteMessage").innerText =
-    msg;
+function nextSlide() {
+  document.getElementById("slide1").classList.add("hidden");
+  document.getElementById("slide2").classList.remove("hidden");
+
+  document.getElementById("question").innerText =
+    `So babe… will you be my Valentine? 💘`;
 }
 
 function sayYes() {
-  document.getElementById("inviteCard").classList.add("hidden");
-  document.getElementById("yesCard").classList.remove("hidden");
-
-  document.getElementById("secretMessage").innerText =
-    `${girl}, I’m so happy 😍 Happy Valentine’s Day! Love, ${boy} ❤️`;
+  document.getElementById("slide2").classList.add("hidden");
+  document.getElementById("yesSlide").classList.remove("hidden");
 }
 
 function sayNo() {
-  document.getElementById("inviteCard").classList.add("hidden");
-  document.getElementById("noCard").classList.remove("hidden");
+  document.getElementById("slide2").classList.add("hidden");
+  document.getElementById("noSlide").classList.remove("hidden");
 }
