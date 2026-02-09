@@ -1,36 +1,32 @@
-let girl = "";
-let message = "";
+const girlName = "Nokutenda"; // Hardcoded name
 
-function start() {
-  girl = document.getElementById("girlName").value;
-  message = document.getElementById("message").value;
+const messages = [
+  `Hey ${girlName}, will you be my Valentine?`,
+  "Are you sure?",
+  `Thank you, babe. I knew you would say yes. This is my first gift to you, asking you to be my Valentine. I know you're already my girlfriend, but it would be very special if you become my Valentine.`,
+  "Yeah, I knew you would agree. Thank you so much, babe ❤️",
+  "THE END 💖"
+];
 
-  if (girl === "" || message === "") {
-    alert("Please fill everything 💕");
+let stepIndex = 0;
+
+function showMessage() {
+  document.getElementById("messageText").innerText = messages[stepIndex];
+  if(stepIndex === messages.length - 1){
+    document.getElementById("buttons").style.display = "none";
+  } else {
+    document.getElementById("buttons").style.display = "block";
+  }
+}
+
+function nextStep(answer) {
+  if(answer === 'no'){
+    document.getElementById("messageText").innerText = "It's okay 🌸 Maybe next time!";
+    document.getElementById("buttons").style.display = "none";
     return;
   }
-
-  document.getElementById("formCard").classList.add("hidden");
-  document.getElementById("slide1").classList.remove("hidden");
-
-  document.getElementById("loveMessage").innerText =
-    `Hey ${girl} babe 💖\n\n${message}`;
+  stepIndex++;
+  showMessage();
 }
 
-function nextSlide() {
-  document.getElementById("slide1").classList.add("hidden");
-  document.getElementById("slide2").classList.remove("hidden");
-
-  document.getElementById("question").innerText =
-    `So babe… will you be my Valentine? 💘`;
-}
-
-function sayYes() {
-  document.getElementById("slide2").classList.add("hidden");
-  document.getElementById("yesSlide").classList.remove("hidden");
-}
-
-function sayNo() {
-  document.getElementById("slide2").classList.add("hidden");
-  document.getElementById("noSlide").classList.remove("hidden");
-}
+showMessage();
