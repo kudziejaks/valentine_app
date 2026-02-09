@@ -1,32 +1,44 @@
-const girlName = "Nokutenda"; // Hardcoded name
+const name = "Shizane";
 
 const messages = [
-  `Hey ${girlName}, will you be my Valentine?`,
-  "Are you sure?",
-  `Thank you, babe. I knew you would say yes. This is my first gift to you, asking you to be my Valentine. I know you're already my girlfriend, but it would be very special if you become my Valentine.`,
-  "Yeah, I knew you would agree. Thank you so much, babe ❤️",
-  "THE END 💖"
+  `Hey ${name}, will you be my Valentine? 💖`,
+  "Are you sure? 😌",
+  `If I could give you one thing in life, I'd give you the ability to see yourself through my eyes.
+Only then you would realize how special you are to me.
+
+I choose you, and I will choose you over and over again,
+without pause, without doubt, in a heartbeat.
+I'll keep choosing you. 💕`,
+  `You are not just my Valentine,
+you are my always and forever. ❤️`
 ];
 
-let stepIndex = 0;
+let step = 0;
 
-function showMessage() {
-  document.getElementById("messageText").innerText = messages[stepIndex];
-  if(stepIndex === messages.length - 1){
-    document.getElementById("buttons").style.display = "none";
-  } else {
-    document.getElementById("buttons").style.display = "block";
-  }
+document.getElementById("message").innerText = messages[step];
+
+// Create floating hearts
+for (let i = 0; i < 30; i++) {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDelay = Math.random() * 5 + "s";
+  heart.style.background = Math.random() > 0.5 ? "#ff4d6d" : "#ffd6e8";
+  document.body.appendChild(heart);
 }
 
-function nextStep(answer) {
-  if(answer === 'no'){
-    document.getElementById("messageText").innerText = "It's okay 🌸 Maybe next time!";
+function answer(choice) {
+  if (choice === "no") {
+    document.getElementById("message").innerText =
+      "It's okay 🌸 You are still special.";
     document.getElementById("buttons").style.display = "none";
     return;
   }
-  stepIndex++;
-  showMessage();
-}
 
-showMessage();
+  step++;
+  if (step < messages.length) {
+    document.getElementById("message").innerText = messages[step];
+  } else {
+    document.getElementById("buttons").style.display = "none";
+  }
+}
