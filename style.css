@@ -1,70 +1,69 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff4d6d, #ffb3c6, #b5e3ff);
   overflow: hidden;
 }
 
-/* Valentine background with hearts + red + glitter pink */
-.slide {
-  height: 100vh;
-  width: 100%;
-  background: radial-gradient(circle at center, #ff4d6d, #ffcccc, #ffd6e8);
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-/* Hearts animation */
-@keyframes floatHearts {
-  0% { transform: translateY(100vh) rotate(0deg); opacity:1;}
-  100% { transform: translateY(-100vh) rotate(360deg); opacity:0;}
-}
-
+/* Floating hearts */
 .heart {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background: red;
+  width: 15px;
+  height: 15px;
+  background: pink;
   transform: rotate(-45deg);
-  animation: floatHearts 10s linear infinite;
+  animation: float 8s infinite;
+  opacity: 0.8;
 }
 
-.heart:before,
-.heart:after {
+.heart::before,
+.heart::after {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background: red;
+  width: 15px;
+  height: 15px;
+  background: inherit;
   border-radius: 50%;
 }
 
-.heart:before {
-  top: -10px;
+.heart::before {
+  top: -7px;
   left: 0;
 }
 
-.heart:after {
-  left: 10px;
+.heart::after {
+  left: 7px;
   top: 0;
 }
 
-.overlay {
-  background: rgba(0,0,0,0.5);
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(-45deg); }
+  100% { transform: translateY(-10vh) rotate(-45deg); }
+}
+
+/* Main card */
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: rgba(0,0,0,0.55);
   color: white;
-  padding: 40px;
-  border-radius: 15px;
-  text-align: center;
+  padding: 35px;
+  border-radius: 18px;
   max-width: 600px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(255,182,193,0.8);
 }
 
 button {
-  margin: 10px;
-  padding: 10px 20px;
+  margin: 12px;
+  padding: 12px 25px;
   font-size: 18px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
 }
@@ -75,5 +74,5 @@ button {
 }
 
 .no {
-  background: #ccc;
+  background: #ddd;
 }
