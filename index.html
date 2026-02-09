@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Be My Valentine 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card" id="formCard">
+    <h1>💌 Valentine Invite</h1>
+
+    <input type="text" id="boyName" placeholder="Your name">
+    <input type="text" id="girlName" placeholder="Her name">
+    <textarea id="message" placeholder="Write your special message..."></textarea>
+
+    <button onclick="createInvite()">Create Valentine 💘</button>
+  </div>
+
+  <div class="card hidden" id="inviteCard">
+    <h2 id="inviteTitle"></h2>
+    <p id="inviteMessage"></p>
+
+    <h3>Will you be my Valentine? 💖</h3>
+
+    <button class="yes" onclick="sayYes()">YES 💕</button>
+    <button class="no" onclick="sayNo()">NO 🙈</button>
+  </div>
+
+  <div class="card hidden" id="yesCard">
+    <h1>🎉 SHE SAID YES! 🎉</h1>
+    <p id="secretMessage"></p>
+  </div>
+
+  <div class="card hidden" id="noCard">
+    <h1>😢</h1>
+    <p>It’s okay, you’re still amazing 💐</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
