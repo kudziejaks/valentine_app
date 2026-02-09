@@ -1,66 +1,79 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 
-.card {
-  padding: 25px;
-  max-width: 400px;
-  margin: 80px auto;
-  background: white;
-  border-radius: 15px;
-  text-align: center;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-}
-
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
+/* Valentine background with hearts + red + glitter pink */
 .slide {
-  background-image: url("bg.jpg");
-  background-size: cover;
-  background-position: center;
   height: 100vh;
   width: 100%;
+  background: radial-gradient(circle at center, #ff4d6d, #ffcccc, #ffd6e8);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Hearts animation */
+@keyframes floatHearts {
+  0% { transform: translateY(100vh) rotate(0deg); opacity:1;}
+  100% { transform: translateY(-100vh) rotate(360deg); opacity:0;}
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(-45deg);
+  animation: floatHearts 10s linear infinite;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -10px;
+  left: 0;
+}
+
+.heart:after {
+  left: 10px;
+  top: 0;
 }
 
 .overlay {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.5);
   color: white;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
+  padding: 40px;
+  border-radius: 15px;
   text-align: center;
+  max-width: 600px;
 }
 
-.overlay p, .overlay h1 {
-  max-width: 600px;
-  font-size: 20px;
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
 }
 
 .yes {
   background: #ff4d6d;
   color: white;
-  margin: 10px;
 }
 
 .no {
   background: #ccc;
-}
-
-.hidden {
-  display: none;
 }
